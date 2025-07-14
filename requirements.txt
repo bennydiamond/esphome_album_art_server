@@ -1,0 +1,5 @@
+# requirements.txt
+paho-mqtt
+Pillow
+PyYAML
+aioesphomeapi
