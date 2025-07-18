@@ -1,0 +1,80 @@
+# -------------------
+# General Settings
+# -------------------
+log_level: INFO
+
+# -------------------
+# Data Source (CHOOSE ONE)
+# -------------------
+# To use a HomePod as the source, uncomment and configure this block.
+# To use MQTT as the source, comment this block out.
+#homepod:
+#  # The name of your HomePod as it appears in the Home app
+#  name: "Homepod"
+
+# To use MQTT as the source, uncomment and configure this block.
+# To use a HomePod as the source, comment this block out.
+#mqtt:
+#  broker: "192.168.1.192"
+#  port: 1883
+#  username: "shairport"
+#  password: "shairport"
+#  # The base topic prefix for shairport-sync metadata
+#  topic_prefix: "prefix_set_in_shairport_conf/shairport"
+#  # (Optional) The MQTT topic to monitor for device availability
+#  topic_availability: "some_other_service/availability"
+#  # The payload that indicates the device is online
+#  payload_available: "online"
+#  # The payload that indicates the device is offline
+#  payload_not_available: "offline"
+
+# -------------------
+# Image Serving Settings
+# -------------------
+# The local port for the HTTP server
+http_port: 76
+
+# The local file paths to your default/fallback cover images
+default_cover_jpeg: "default_cover.jpg"
+default_cover_png: "default_cover.png"
+
+# The filenames that the server will use to serve the images.
+# Example: http://<your-ip>:8124/cover.jpg
+served_jpeg_filename: "/music_cover.jpg"
+served_png_filename: "/music_cover.png"
+served_default_jpeg_filename: "/default_cover.jpg"
+served_default_png_filename: "/default_cover.png"
+
+# -------------------
+# Image Processing Settings
+# -------------------
+# The size to which the cover art will be resized [width, height]
+image_size: [200, 200]
+# The quality for the served JPEG image (1-100)
+jpeg_quality: 75
+
+# -------------------
+# ESPHome Integration (Optional)
+# -------------------
+esphome:
+  # The IP address or hostname of your ESPHome device
+  device_ip: "192.168.1.137"
+
+  # The API password for your ESPHome device (if you have one set)
+  # api_password: "YOUR_API_PASSWORD"
+
+  # The name of the user-defined action to call on the ESPHome device
+  # when a new cover image is processed.
+  action_artwork_received: "refresh_now_playing_art"
+
+  # (Optional) The name of the action to call when the track title changes.
+  # The new title will be sent as a string variable named "value".
+  action_title_changed: "refresh_now_playing_title"
+
+  # (Optional) The name of the action to call when the artist changes.
+  # The new artist will be sent as a string variable named "value".
+  action_artist_changed: "refresh_now_playing_artist"
+
+  # (Optional) The name of the action to call when the album changes.
+  # The new album will be sent as a string variable named "value".
+  action_album_changed: "refresh_now_playing_album"
